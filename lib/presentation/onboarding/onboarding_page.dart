@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit_ninja/business_logic/onboard_cubit.dart';
 import 'package:fruit_ninja/presentation/authentication/sign_in.dart';
 
 import '../components/custom_button.dart';
@@ -33,10 +35,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
             CustomButton(
               buttonText: 'Next',
               onPressed: (){
-                print(current_page);
                 if (current_page == 0) {
                   _pageViewController.jumpToPage(1);
                 } else {
+                  BlocProvider.of<OnboardCubit>(context).RemovePage();
                   Navigator.push(context, MaterialPageRoute(builder: (context) => SignInPage(),));
                 }
               }

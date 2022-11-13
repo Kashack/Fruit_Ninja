@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_ninja/presentation/authentication/sign_up.dart';
 import 'package:fruit_ninja/presentation/components/custom_button.dart';
-
 import '../../data/authentication.dart';
 import '../components/text_form_field.dart';
 
