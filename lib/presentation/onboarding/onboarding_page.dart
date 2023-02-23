@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_ninja/business_logic/onboard_cubit.dart';
 import 'package:fruit_ninja/presentation/authentication/sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../components/custom_button.dart';
 
@@ -15,6 +16,7 @@ class OnboardingPage extends StatefulWidget {
 class _OnboardingPageState extends State<OnboardingPage> {
   final _pageViewController = PageController();
   int current_page = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,10 +38,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
               buttonText: 'Next',
               onPressed: (){
                 if (current_page == 0) {
-                  _pageViewController.jumpToPage(1);
+                  _pageViewController.animateToPage(1, duration: Duration(seconds: 1), curve: Curves.bounceOut);
                 } else {
-                  BlocProvider.of<OnboardCubit>(context).RemovePage();
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignInPage(),));
+                  Navigator.pushAndRemoveUntil(
+                      context, MaterialPageRoute(builder: (context) => SignInPage(),),(route) => false);
                 }
               }
               ),

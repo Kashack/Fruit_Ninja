@@ -43,6 +43,10 @@ dependencies:
   flutter_svg: ^1.1.6
   flutter_bloc: ^8.1.1
   google_sign_in: ^5.4.2
+  image_picker: ^0.8.6
+  connectivity_plus: ^3.0.3
+#  flutter_offline: ^2.1.0
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:
@@ -55,6 +59,7 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
   flutter_native_splash: ^2.2.13
+
 
 flutter_native_splash:
   image: assets/images/fruit_logo.png

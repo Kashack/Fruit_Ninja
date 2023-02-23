@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_ninja/presentation/authentication/user_bio.dart';
+import 'package:fruit_ninja/presentation/authentication/verification.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../presentation/authentication/upload_photo.dart';
 import '../presentation/main_screens/home_page.dart';
@@ -24,11 +25,11 @@ class Authentication {
         password: password,
       )
           .then((value) {
-        Navigator.push(
+        Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-              builder: (context) => HomePage(),
-            ));
+              builder: (context) => VerificationPage(),
+            ),ModalRoute.withName('/'));
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == "network-request-failed") {
@@ -57,11 +58,11 @@ class Authentication {
             'username': username,
             'email': email,
           }).then((value) {
-            Navigator.push(
+            Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => UserBioPage(),
-                ));
+                  builder: (context) => VerificationPage(),
+                ), ModalRoute.withName('/'));
           });
         } on FirebaseException catch (e) {
           if (e.code == "network-request-failed") {
@@ -116,6 +117,12 @@ class Authentication {
             });
           }
         }
+      }).then((value){
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomePage(),
+            ));
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'account-exists-with-different-credential') {

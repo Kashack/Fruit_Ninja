@@ -8,7 +8,6 @@ class UploadPhotoPage extends StatelessWidget {
   const UploadPhotoPage({Key? key}) : super(key: key);
 
   @override
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(

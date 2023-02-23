@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:fruit_ninja/data/authentication.dart';
+import 'package:fruit_ninja/presentation/authentication/verification.dart';
 import 'package:fruit_ninja/presentation/components/custom_button.dart';
 
 import '../components/text_form_field.dart';
@@ -60,7 +62,10 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                         onchanged: (value) => username = value,
-                        prefix_icon: Image.asset('assets/images/user_icon.png'),
+                        prefix_icon: SvgPicture.asset(
+                          'assets/icons/user_logo.svg',
+                          fit: BoxFit.none,
+                        ),
                       ),
                       const SizedBox(
                         height: 10,
@@ -74,8 +79,9 @@ class _SignUpPageState extends State<SignUpPage> {
                           }
                           return null;
                         },
-                        prefix_icon:
-                            Image.asset('assets/images/message_icon.png'),
+                        prefix_icon: SvgPicture.asset(
+                            'assets/icons/message_logo.svg',
+                            fit: BoxFit.none),
                       ),
                       const SizedBox(
                         height: 10,
@@ -89,7 +95,9 @@ class _SignUpPageState extends State<SignUpPage> {
                           }
                           return null;
                         },
-                        prefix_icon: Image.asset('assets/images/lock_icon.png'),
+                        prefix_icon: SvgPicture.asset(
+                            'assets/icons/lock_logo.svg',
+                            fit: BoxFit.none),
                         suffix_icon: IconButton(
                           onPressed: () {
                             setState(() {
@@ -122,7 +130,9 @@ class _SignUpPageState extends State<SignUpPage> {
                           }
                           return null;
                         },
-                        prefix_icon: Image.asset('assets/images/lock_icon.png'),
+                        prefix_icon: SvgPicture.asset(
+                            'assets/icons/lock_logo.svg',
+                            fit: BoxFit.none),
                         suffix_icon: IconButton(
                           onPressed: () {
                             setState(() {
@@ -131,13 +141,13 @@ class _SignUpPageState extends State<SignUpPage> {
                           },
                           icon: _isObsecure2 == true
                               ? Icon(
-                            Icons.visibility_off,
-                            color: Colors.black,
-                          )
+                                  Icons.visibility_off,
+                                  color: Colors.black,
+                                )
                               : Icon(
-                            Icons.visibility,
-                            color: Colors.black,
-                          ),
+                                  Icons.visibility,
+                                  color: Colors.black,
+                                ),
                         ),
                         isObscureText: _isObsecure2,
                       ),
@@ -180,7 +190,13 @@ class _SignUpPageState extends State<SignUpPage> {
                               email: email!,
                               password: password!,
                             );
-                          }
+                          };
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => VerificationPage(),
+                          //   ),
+                          // );
                           setState(() {
                             _isLoading = false;
                           });
